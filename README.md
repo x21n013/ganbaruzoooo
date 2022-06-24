@@ -1,4 +1,4 @@
-# gannbaruzoooo
-gannbarimasu
+# ganbaruzoooo
+ganbarimasu
 
 test no.1
