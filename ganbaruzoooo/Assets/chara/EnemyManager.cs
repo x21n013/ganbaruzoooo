@@ -8,10 +8,11 @@ public class EnemyManager : MonoBehaviour
     public Transform target;
     NavMeshAgent agent;
     Animator animator;
-    // Start is called before the first frame update
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.destination = target.position;
         animator = GetComponent<Animator>();
     }
 
@@ -19,7 +20,7 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         agent.destination = target.position;
-        agent.destination = target.position;
+  
         float distance = Vector3.Distance(target.position, transform.position);
         if(distance < 2)
         {

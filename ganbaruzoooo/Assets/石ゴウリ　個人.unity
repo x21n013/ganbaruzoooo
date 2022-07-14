@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 40f214cb2788b144f993b69902ab09b4, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b1fec9becb55c734d915bb648d8093d4, type: 2}
 --- !u!1001 &140279630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,17 +330,17 @@ MonoBehaviour:
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenX: 0.5299252
+  m_ScreenY: 0.5598931
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0
+  m_DeadZoneWidth: 0.15162101
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.11405846
-  m_SoftZoneHeight: 0.32169282
-  m_BiasX: -0.0000033967685
-  m_BiasY: 0
+  m_SoftZoneWidth: 0.1995013
+  m_SoftZoneHeight: 0.5390375
+  m_BiasX: -0.000002750591
+  m_BiasY: -0.00000011057606
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 0
@@ -470,7 +470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935951006}
   m_LocalRotation: {x: -0.061465222, y: -0.013776643, z: 0.00084804144, w: -0.9980138}
-  m_LocalPosition: {x: -0.4139431, y: 1.2270966, z: -10.039645}
+  m_LocalPosition: {x: -0.76435804, y: 1.9134552, z: -9.945072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -634,7 +634,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -750,7 +750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621539444}
   m_LocalRotation: {x: -0.061465222, y: -0.013776643, z: 0.00084804144, w: -0.9980138}
-  m_LocalPosition: {x: -0.4139431, y: 1.2270966, z: -10.039645}
+  m_LocalPosition: {x: -0.76435804, y: 1.9134552, z: -9.945072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 662182561}
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 398237402190582110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d892bd0b6506f54ba7d0c6c92a96488, type: 3}
+  m_Script: {fileID: 11500000, guid: ff08d16431234eb4f8f70f0e2be96357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &398237402190582114
