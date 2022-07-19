@@ -7,6 +7,7 @@ EditorUserSettings:
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       value: 2242470311464658050f1e235fa4a0c390c2f96439262f2434
       flags: 0
@@ -50,6 +51,9 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedScenePath-9:
       value: 224247031146465d040209265f2e5e1918579ffec9a0f6e7633c133af6f9
+>>>>>>> Stashed changes
+=======
+      value: 224247031146465d040209265f2e5e1918579dfac3adf1cd633c133af6f9
 >>>>>>> Stashed changes
       flags: 0
     vcSharedLogLevel:
