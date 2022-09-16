@@ -5,6 +5,7 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -47,6 +48,8 @@ EditorUserSettings:
       value: 224247031146465d040209265f2e5e1918579dfac3adf1cd6d7b5326ece92021
       flags: 0
 >>>>>>> a744545b260c6a7b533613af66ee7d396db30bf3
+=======
+>>>>>>> Stashed changes
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
