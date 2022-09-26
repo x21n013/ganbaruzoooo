@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -46,5 +47,6 @@ public class EnemyManager : MonoBehaviour
         {
             Debug.Log("攻撃をくらう");
         }
+       
     }
 }
