@@ -10,6 +10,6 @@ public class Button : MonoBehaviour
     public void ClickStartButton()
     {
 
-    SceneManager.LoadScene("main 小川 2");
+    SceneManager.LoadScene("小川　石流");
     }
 }
