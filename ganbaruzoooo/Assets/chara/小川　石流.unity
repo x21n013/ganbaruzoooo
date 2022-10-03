@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 5fe12977d932889449ed669adc2f7e48, type: 2}
 --- !u!1001 &81088038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2020,7 +2020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935951006}
   m_LocalRotation: {x: -0.01289861, y: -0.9543692, z: 0.29542664, w: -0.041668672}
-  m_LocalPosition: {x: -0.22610831, y: 6.2203126, z: 7.870643}
+  m_LocalPosition: {x: -0.33187497, y: 6.2203126, z: 7.8613896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 398237402191072574}
@@ -2225,8 +2225,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.3311168, y: 0.0076263286, z: -0.0026858698, w: 0.9435551}
+  m_LocalPosition: {x: 233.09528, y: 21.487354, z: 219.4009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2583,10 +2583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b632bee3ef96d34abf65610d9f1fb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  points: []
-  n: 1
-  image: {fileID: 0}
 --- !u!1 &1147734969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,7 +2608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147734969}
   m_LocalRotation: {x: -0.10746993, y: -0.8684092, z: 0.21527949, w: -0.43355566}
-  m_LocalPosition: {x: -6.496185, y: 6.583374, z: 4.3922462}
+  m_LocalPosition: {x: -6.441743, y: 6.5833755, z: 4.464665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1415159268}
@@ -3316,7 +3312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621539444}
   m_LocalRotation: {x: -0.061465226, y: -0.013776636, z: 0.0008480408, w: -0.9980138}
-  m_LocalPosition: {x: 226.90927, y: 6.2203126, z: 235.1696}
+  m_LocalPosition: {x: 227.01544, y: 6.2203126, z: 235.1696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 662182561}
@@ -4916,17 +4912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8752d53789253e47b69f47ae15f6143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  z: 0
-  speed: 0.1
-  cam: {fileID: 0}
-  cameraRot: {x: 0, y: 0, z: 0, w: 0}
-  characterRot: {x: 0, y: 0, z: 0, w: 0}
-  Xsensityvity: 3
-  Ysensityvity: 3
-  cursorLock: 1
-  minX: -90
-  maxX: 90
 --- !u!114 &398237402190582120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4939,6 +4924,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd61f4010ac6c7942970b239c63c4aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
+  MaxHitPoint: 0
+  HitPoint: 0
+  Status: 0
+  Gold: 0
+  Experience: 0
+  Attack: 0
+  Defence: 0
+  E_Attack: 0
+  E_Defence: 0
 --- !u!1 &398237402190582122
 GameObject:
   m_ObjectHideFlags: 0
