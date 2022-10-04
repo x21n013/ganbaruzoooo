@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - EnemyHit
+  - PlayerHit
+  - EnemyAttack
+  - PlayerAttack
   - 
   - 
   - 
