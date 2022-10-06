@@ -13,8 +13,16 @@ const float GRAVITY = 5.0f; //重力
 const float TARGET_RANGE = 1.5f; //ターゲット範囲
 const float LIGHT_HEIGHT = 5; //ライトの高さ
 
+private enum ActID
+{
+IDOL = 0, //アイドル
+RUN = 1, //走る
+ATTACK = 2 //戦う
+}
+
 //プライベートメンバ
 private CharacterController characterController;
+private Animator animator;
 
 private Vector3 targetPosition; //ターゲット位置
 private GameObject lightObject; //ターゲットライトオブジェクト
@@ -22,6 +30,7 @@ private GameObject lightObject; //ターゲットライトオブジェクト
 void Start()
 {
 characterController = GetComponent<CharacterController>();
+animator = GetComponent<Animator>();
 
 targetPosition = Vector3.zero; //ターゲット位置
 lightObject = GameObject.Find("Spot Light"); //ターゲットライトオブジェクト
@@ -88,5 +97,20 @@ moveVec.y -= GRAVITY * Time.deltaTime;
 
 //プレイヤーを移動する
 characterController.Move(moveVec);
+
+/////////////////////////////////////////////////////////
+//プレイヤーのアニメーション
+/////////////////////////////////////////////////////////
+//ターゲットがある時
+if (targetPosition != Vector3.zero)
+{
+//走る
+animator.SetInteger("actid", (int)ActID.RUN);
+}
+else
+{
+//アイドル状態
+animator.SetInteger("actid", (int)ActID.IDOL);
+}
 }
 }
