@@ -2020,7 +2020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935951006}
   m_LocalRotation: {x: -0.01289861, y: -0.9543692, z: 0.29542664, w: -0.041668672}
-  m_LocalPosition: {x: -0.33187497, y: 6.2203126, z: 7.8613896}
+  m_LocalPosition: {x: -0.10783148, y: 6.2203126, z: 7.880991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 398237402191072574}
@@ -2583,6 +2583,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b632bee3ef96d34abf65610d9f1fb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1147198602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147198596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd61f4010ac6c7942970b239c63c4aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 1
+  MaxHitPoint: 1
+  HitPoint: 1
+  Status: 1
+  Gold: 1
+  Experience: 1
+  Attack: 1
+  Defence: 1
+  E_Attack: 1
+  E_Defence: 1
 --- !u!1 &1147734969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2630,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147734969}
   m_LocalRotation: {x: -0.10746993, y: -0.8684092, z: 0.21527949, w: -0.43355566}
-  m_LocalPosition: {x: -6.441743, y: 6.5833755, z: 4.464665}
+  m_LocalPosition: {x: -6.5570636, y: 6.5833726, z: 4.311285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1415159268}
@@ -3312,7 +3334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621539444}
   m_LocalRotation: {x: -0.061465226, y: -0.013776636, z: 0.0008480408, w: -0.9980138}
-  m_LocalPosition: {x: 227.01544, y: 6.2203126, z: 235.1696}
+  m_LocalPosition: {x: 226.79054, y: 6.2203126, z: 235.1696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 662182561}
@@ -4924,16 +4946,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd61f4010ac6c7942970b239c63c4aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 0
-  MaxHitPoint: 0
-  HitPoint: 0
-  Status: 0
-  Gold: 0
-  Experience: 0
-  Attack: 0
-  Defence: 0
-  E_Attack: 0
-  E_Defence: 0
+  Level: 100
+  MaxHitPoint: 100
+  HitPoint: 100
+  Status: 100
+  Gold: 100
+  Experience: 100
+  Attack: 100
+  Defence: 100
+  E_Attack: 100
+  E_Defence: 100
 --- !u!1 &398237402190582122
 GameObject:
   m_ObjectHideFlags: 0
