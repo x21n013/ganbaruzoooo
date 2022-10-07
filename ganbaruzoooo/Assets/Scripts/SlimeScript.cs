@@ -8,12 +8,23 @@ public class SlimeScript : MonoBehaviour
 const int RANDOM_RANGE = 30; //ランダム範囲
 const float ROTATE_SPEED = 200.0f; //回転スピード
 
+const float INVINCIBLE_TIME = 1.0f; //無敵時間（1.0秒）
+const float DESTROY_TIME = 1.0f; //削除時間（1秒）
+
+//パブリックメンバ
+public int HitPoint; //体力
+
 //プライベートメンバ
 private Rigidbody rigidbody;
+private bool isDamage; //攻撃を受けている状態
+private float elapsedTime; //経過時間
 
 void Start()
 {
 rigidbody = GetComponent<Rigidbody>();
+
+isDamage = false; //攻撃を受けている状態
+elapsedTime = 0f; //経過時間
 }
 
 void Update()
@@ -41,6 +52,51 @@ Quaternion.RotateTowards(transform.rotation,
 Quaternion.LookRotation(aim, Vector3.up),
 ROTATE_SPEED * Time.deltaTime);
 this.transform.localRotation = look;
+}
+
+/////////////////////////////////////////////////////////
+//攻撃を受けている時の無敵時間制御
+/////////////////////////////////////////////////////////
+if (isDamage)
+{
+elapsedTime += Time.deltaTime;
+if (elapsedTime >= INVINCIBLE_TIME)
+{
+//無敵時間を経過した時、次の攻撃を受け付ける
+isDamage = false;
+}
+}
+}
+
+/////////////////////////////////////////////////////////
+//Colliderに触れている時に呼ばれるメゾット
+/////////////////////////////////////////////////////////
+void OnTriggerStay(Collider collider)
+{
+//プレイヤーに触れている時
+if (collider.gameObject.tag == "Player")
+{
+//プレイヤーの方向に向きを変える
+this.transform.LookAt(collider.gameObject.transform.position);
+//衝突で発生した回転を調整する
+this.transform.eulerAngles = new Vector3(0, this.transform.eulerAngles.y, 0);
+}
+//プレイヤーのダメージ部分（剣）に触れている時
+if (collider.gameObject.tag == "Sword")
+{
+if (!isDamage)
+{
+//無敵時間制御用変数初期化
+isDamage = true;
+elapsedTime = 0f;
+
+//体力計算
+HitPoint--;
+if (HitPoint <= 0)
+{
+Destroy(this.gameObject, DESTROY_TIME);
+}
+}
 }
 }
 }
