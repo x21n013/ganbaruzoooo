@@ -7,6 +7,9 @@ TagManager:
   - Sword
   - Monster
   - Damage
+  - Laser
+  - Enemy
+  - people
   layers:
   - Default
   - TransparentFX
