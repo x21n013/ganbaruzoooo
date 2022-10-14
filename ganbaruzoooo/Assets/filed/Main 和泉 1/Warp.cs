@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class NewBehaviourScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+using System.Collections;
+ 
+public class Warp : MonoBehaviour {
+ 
+	public Transform warpPoint;
+ 
+	void OnTriggerEnter(Collider col) {
+		if(col.tag == "Player") {
+			//　キャラクターの状態をワープ状態に変更
+			col.GetComponent <WarpChara>().SetState(WarpChara.WarpCharaState.GoToWarpPoint, transform, warpPoint);
+		}
+	}
 }
+ 
