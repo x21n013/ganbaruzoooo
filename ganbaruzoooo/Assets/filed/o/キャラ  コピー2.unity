@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &95813769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_Name
+      value: Teleporter Pad fbx (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 260
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c35f9adce9ce9e842af3d28ee7f2c75f, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
 --- !u!1001 &140279630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -285,6 +346,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 388476416, guid: 7df524699deb44341b3693c8538df185, type: 3}
   m_PrefabInstance: {fileID: 140279630}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &160889964
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_Name
+      value: Teleporter Pad fbx
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3768660f1dabde5488a0bd6ce397216d, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da35992fbe2e75d40b634d87d754fd41, type: 3}
 --- !u!1 &307762695
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147734969}
   m_LocalRotation: {x: -0.10746993, y: -0.8684092, z: 0.21527949, w: -0.43355566}
-  m_LocalPosition: {x: -6.487252, y: 6.5833745, z: 4.4041176}
+  m_LocalPosition: {x: -6.489736, y: 6.5833745, z: 4.400821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1415159268}
