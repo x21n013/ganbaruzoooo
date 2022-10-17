@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Fungus;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -41,6 +42,8 @@ private GameObject lightObject; //ターゲットライトオブジェクト
 private GameObject targetObject; //ターゲットオブジェクト
 private bool isDamage; //攻撃を受けている状態
 private float elapsedTime; //経過時間
+
+private Flowchart flowChart;
 
 void Start()
 {
@@ -208,6 +211,27 @@ else
 animator.SetInteger("hitid", (int)HitID.HIT);
 }
 }
+}
+}
+
+/////////////////////////////////////////////////////////
+//Colliderに触れた時に呼ばれるメゾット
+/////////////////////////////////////////////////////////
+void OnTriggerEnter(Collider collider)
+{
+//町の人に触れた時
+if (collider.gameObject.tag == "People")
+{
+//アイドル状態
+animator.SetInteger("actid", (int)ActID.IDOL);
+
+//ターゲットを初期化
+targetObject = null;
+targetPosition = Vector3.zero;
+
+//会話イベント呼び出し
+flowChart = collider.gameObject.GetComponent<Flowchart>();
+flowChart.SendFungusMessage("Talk");
 }
 }
 }
