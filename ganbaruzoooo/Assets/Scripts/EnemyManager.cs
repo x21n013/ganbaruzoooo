@@ -46,7 +46,11 @@ public class EnemyManager : MonoBehaviour
         if(damager != null)
         {
             Debug.Log("攻撃をくらう");
+
         }
-       
+
+
+
+
     }
 }
