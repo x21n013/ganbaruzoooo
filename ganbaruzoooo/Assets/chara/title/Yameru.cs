@@ -1,8 +1,9 @@
+
 using UnityEngine;
 
-public class Yameru: MonoBehaviour
+public class Test: MonoBehaviour
 {
-   
+   //ゲーム終了:ボタンから呼び出す
     public void EndGame()
     {
 #if UNITY_EDITOR

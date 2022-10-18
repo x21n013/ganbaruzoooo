@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-public class Button : MonoBehaviour
+ 
+public class GameStart : MonoBehaviour
 {
     public void ClickStartButton()
     {
-
-    SceneManager.LoadScene("小川　石流");
+        SceneManager.LoadScene("小川　石流");
     }
 }
