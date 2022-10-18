@@ -7,13 +7,7 @@ public class Warp : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter(Collections Collections)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {   
-        //transformを取得
+         //transformを取得
         Transform myTransform = this.transform;
 
         //座標を取得
@@ -24,5 +18,8 @@ public class Warp : MonoBehaviour
 
         myTransform.position = pos; //座標を設定
         
+        
     }
-}
+
+    // Update is called once per frame
+}  
