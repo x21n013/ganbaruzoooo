@@ -13,9 +13,9 @@ public class Wa2 : MonoBehaviour
  
         // 座標を取得
         Vector3 pos = myTransform.position;
-        pos.x += 10000f;    // x座標へ0.01加算
-        pos.y += 10000f;    // y座標へ0.01加算
-        pos.z += 10000f;    // z座標へ0.01加算
+        pos.x += -80f;    // x座標へ0.01加算
+        pos.y += 1500.5f;    // y座標へ0.01加算
+        pos.z += -40f;    // z座標へ0.01加算
  
         myTransform.position = pos;  // 座標を設定
     }
