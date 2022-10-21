@@ -45,7 +45,7 @@ public class EnemyManager : MonoBehaviour
         Damage damager = other.GetComponent<Damage>();
         if(damager != null)
         {
-            object p = Debug.Log("攻撃をくらう");
+            //object p = Debug.Log("攻撃をくらう");
 
         }
 
