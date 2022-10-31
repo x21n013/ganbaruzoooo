@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+    internal object onClick;
+    internal Image targetGraphic;
+
     public void ClickStartButton()
     {
 
