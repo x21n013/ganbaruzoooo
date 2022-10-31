@@ -220,7 +220,7 @@ animator.SetInteger("hitid", (int)HitID.HIT);
 void OnTriggerEnter(Collider collider)
 {
 //町の人に触れた時
-if (collider.gameObject.tag == "People")
+if (collider.gameObject.tag == "people")
 {
 //アイドル状態
 animator.SetInteger("actid", (int)ActID.IDOL);
