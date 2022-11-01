@@ -822,9 +822,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -849,8 +849,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935951006}
-  m_LocalRotation: {x: 6.4098775e-17, y: -0.0000003017485, z: 1.9438744e-23, w: 1}
-  m_LocalPosition: {x: 0.000005841255, y: 3, z: -10.000001}
+  m_LocalRotation: {x: -0.01289861, y: -0.9543692, z: 0.29542664, w: -0.041668672}
+  m_LocalPosition: {x: -0.24343711, y: 166.2203, z: 7.869127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 390807114}
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 1147734971}
   m_Layer: 0
   m_Name: CM vcam2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1121,7 +1121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147734969}
   m_LocalRotation: {x: -0.10746993, y: -0.8684092, z: 0.21527949, w: -0.43355566}
-  m_LocalPosition: {x: -6.496171, y: 6.583359, z: 4.392263}
+  m_LocalPosition: {x: -6.47478, y: 6.583359, z: 4.42071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1415159268}
