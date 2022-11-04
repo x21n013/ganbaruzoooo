@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warpsys : MonoBehaviour
+public class Warpsys1 : MonoBehaviour
 {
     // Start is called before the first frame update
       void OnTriggerEnter(Collider ta){
