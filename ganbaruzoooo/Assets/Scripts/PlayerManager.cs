@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Fungus;
+
+
+
 
 public class PlayerManager : MonoBehaviour
+
 {
+    private Flowchart flowChart;
     Rigidbody rb;
     Animator animator;
 
@@ -15,7 +22,7 @@ public class PlayerManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -37,7 +44,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //当たり判定
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter1(Collider other)
     {
         Damage damager = other.GetComponent<Damage>();
         if(damager != null)
@@ -46,4 +53,14 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider collider){ 
+        if (collider.gameObject.tag == "people"){
+            Debug.Log("test");
+        //animator.SetInteger("actid".(int)ActID.IDOL);
+        flowChart = collider.gameObject.GetComponent<Flowchart>();
+        flowChart.SendFungusMessage("Talk");
+        }
+     }
 }
+
+
