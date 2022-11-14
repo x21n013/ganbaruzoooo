@@ -10,6 +10,7 @@ TagManager:
   - Laser
   - Enemy
   - people
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -7,19 +7,36 @@ public class PlayerController : MonoBehaviour
     // 攻撃判定用オブジェクト.
     [SerializeField] GameObject attackHit = null;
 
+    //設置判定用のColliderCall
+    [SerializeField] ColliderCallReceiver footColliderCall = null;
+
+    //ジャンプ力
+    [SerializeField] float jumpPower = 20f;
+
     // アニメーター.
     Animator animator = null;
 
-    //! 攻撃アニメーション中フラグ.
+    //リジッドボディ
+    Rigidbody rigid = null;
+
+    // 攻撃アニメーション中フラグ
     bool isAttack = false;
+
+    //接地フラグ
+    bool isGround = false;
 
     // Start is called before the first frame update
     void Start()
     {
         // Animatorを取得し保管.
         animator = GetComponent<Animator>();
+        //リジッドボディの取得
+        rigid = GetComponent<Rigidbody>();
         // 攻撃判定用オブジェクトを非表示に.
         attackHit.SetActive( false );
+        //FootSphereのイベント登録
+        footColliderCall.TriggerStayEvent.AddListener( OnFootTriggerStay );
+        footColliderCall.TriggerExitEvent.AddListener( OnFootTriggerExit );
     }
 
     // Update is called once per frame
@@ -43,6 +60,55 @@ public class PlayerController : MonoBehaviour
             isAttack = true;
         }
     }
+
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// ジャンプボタンクリックコールバック.
+    /// </summary>
+    // ---------------------------------------------------------------------
+    public void OnjumpButtonClicked()
+    {
+         if( isGround == true )
+        {
+            rigid.AddForce( Vector3.up * jumpPower, ForceMode.Impulse );
+        }
+    }
+
+     // ---------------------------------------------------------------------
+    /// <summary>
+    /// FootSphereトリガーステイコール.
+    /// </summary>
+    /// <param name="col"> 侵入したコライダー. </param>
+    // ---------------------------------------------------------------------
+    void OnFootTriggerStay( Collider col )
+    {
+        if( col.gameObject.tag == "Ground" )
+        {
+            if( isGround == false ) isGround = true;
+            if( animator.GetBool( "isGround" ) == false ) animator.SetBool( "isGround", true );
+
+        }
+    }
+
+     // ---------------------------------------------------------------------
+    /// <summary>
+    /// FootSphereトリガーイグジットコール.
+    /// </summary>
+    /// <param name="col"> 侵入したコライダー. </param>
+    // ---------------------------------------------------------------------
+    void OnFootTriggerExit( Collider col )
+    {
+        if( col.gameObject.tag == "Ground" )
+        {
+            isGround = false;
+            animator.SetBool( "isGround", false );
+
+        }
+    
+    }
+
+    
+
      // ---------------------------------------------------------------------
     /// <summary>
     /// 攻撃アニメーションHitイベントコール.
