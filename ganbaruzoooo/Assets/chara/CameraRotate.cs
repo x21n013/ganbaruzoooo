@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
  
-public class NewBehaviourScript : MonoBehaviour {
+public class CameraRotate : MonoBehaviour {
  
     //プレイヤーを変数に格納
     public GameObject Player;
