@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class PlayerController : MonoBehaviour
 {
+    
     // 攻撃判定用オブジェクト.
     [SerializeField] GameObject attackHit = null;
 
@@ -146,7 +148,15 @@ public class PlayerController : MonoBehaviour
         }
     
     }
-
+    private Flowchart flowChart;
+    void OnTriggerEnter(Collider collider){ 
+        
+            if (collider.gameObject.tag == "people"){
+            //animator.SetInteger("actid".(int)ActID.IDOL);
+            flowChart = collider.gameObject.GetComponent<Flowchart>();
+            flowChart.SendFungusMessage("Talk");
+            }
+        }
     
 
      // ---------------------------------------------------------------------
