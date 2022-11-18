@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     //ジャンプ力
     [SerializeField] float jumpPower = 20f;
 
+    
+
+        // PCキー横方向入力.
+    float horizontalKeyInput = 0;
+        // PCキー縦方向入力.
+    float verticalKeyInput = 0;
+
     // アニメーター.
     Animator animator = null;
 
@@ -42,8 +49,41 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        horizontalKeyInput = Input.GetAxis( "Horizontal" );
+        verticalKeyInput = Input.GetAxis( "Vertical" );
+ 
+        // プレイヤーの向きを調整.
+        bool isKeyInput = ( horizontalKeyInput != 0 || verticalKeyInput != 0 );
+        if( isKeyInput == true && isAttack == false )
+        {
+            bool currentIsRun = animator.GetBool( "isRun" );
+            if( currentIsRun == false ) animator.SetBool( "isRun", true );
+            Vector3 dir = rigid.velocity.normalized;
+            dir.y = 0;
+            this.transform.forward = dir;
+        }
+        else
+        {
+            bool currentIsRun = animator.GetBool( "isRun" );
+            if( currentIsRun == true ) animator.SetBool( "isRun", false );
+        }
+
     }
+
+    void FixedUpdate()
+{
+    if( isAttack == false )
+        {
+            Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
+            Vector3 move = input.normalized * 2f;
+            Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
+            cameraMove.y = 0;
+            Vector3 currentRigidVelocity = rigid.velocity;
+            currentRigidVelocity.y = 0;
+ 
+            rigid.AddForce( cameraMove - currentRigidVelocity, ForceMode.VelocityChange );
+        }
+}
 
     // ---------------------------------------------------------------------
     /// <summary>
