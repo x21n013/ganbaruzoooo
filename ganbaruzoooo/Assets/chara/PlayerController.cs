@@ -13,10 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ColliderCallReceiver footColliderCall = null;
 
     //ジャンプ力
-    [SerializeField] float jumpPower = 20f;
+    [SerializeField] float jumpPower = 10000f;
 
     
-
         // PCキー横方向入力.
     float horizontalKeyInput = 0;
         // PCキー縦方向入力.
@@ -33,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     //接地フラグ
     bool isGround = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     if( isAttack == false )
         {
             Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-            Vector3 move = input.normalized * 2f;
+            Vector3 move = input.normalized * 7.5f;  //スピード変更
             Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
             cameraMove.y = 0;
             Vector3 currentRigidVelocity = rigid.velocity;
@@ -152,7 +152,8 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider collider){ 
         
             if (collider.gameObject.tag == "people"){
-            //animator.SetInteger("actid".(int)ActID.IDOL);
+            float? horizontalKeyInput = null;
+            float? verticalKeyInput = null;
             flowChart = collider.gameObject.GetComponent<Flowchart>();
             flowChart.SendFungusMessage("Talk");
             }
