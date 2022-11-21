@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class PlayerController : MonoBehaviour
 {
+    
     // 攻撃判定用オブジェクト.
     [SerializeField] GameObject attackHit = null;
 
@@ -14,7 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpPower = 10000f;
 
     
-
         // PCキー横方向入力.
     float horizontalKeyInput = 0;
         // PCキー縦方向入力.
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     //接地フラグ
     bool isGround = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -146,7 +148,16 @@ public class PlayerController : MonoBehaviour
         }
     
     }
-
+    private Flowchart flowChart;
+    void OnTriggerEnter(Collider collider){ 
+        
+            if (collider.gameObject.tag == "people"){
+            float? horizontalKeyInput = null;
+            float? verticalKeyInput = null;
+            flowChart = collider.gameObject.GetComponent<Flowchart>();
+            flowChart.SendFungusMessage("Talk");
+            }
+        }
     
 
      // ---------------------------------------------------------------------
