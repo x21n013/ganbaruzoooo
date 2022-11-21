@@ -21,6 +21,10 @@ public class PlayerManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        /*PlayerPrefs.GetFloat("zahyoux",0);
+        PlayerPrefs.GetFloat("zahyouy",0);
+        PlayerPrefs.GetFloat("zahyouz",0);*/
     }
     
     // Update is called once per frame
@@ -53,6 +57,25 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+    //セーブ
+    /*private void Save()
+    {
+        if(Input.GetKeyUp(KeyCode.S))
+        {
+        float positionX = transform.potion.x;
+        float positionY = transform.potion.y;
+        float positionZ = transform.potion.z;
+
+        PlayerPrefs.SetFloat("zahyoux",positionX);
+        PlayerPrefs.SetFloat("zahyouy",positionY);
+        PlayerPrefs.SetFloat("zahyouz",positionZ);
+
+        PlayerPrefs.Save();
+        }
+    }*/
+    
+=======
     void OnTriggerEnter(Collider collider){ 
         if (collider.gameObject.tag == "people"){
             Debug.Log("test");
@@ -61,6 +84,7 @@ public class PlayerManager : MonoBehaviour
         flowChart.SendFungusMessage("Talk");
         }
      }
+>>>>>>> 55786841f96a1f2dcc7c0ea2a40c9dc7da62d40e
 }
 
 
