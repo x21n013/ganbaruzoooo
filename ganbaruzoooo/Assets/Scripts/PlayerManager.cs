@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Fungus;
+
+
+
 
 public class PlayerManager : MonoBehaviour
+
 {
+    private Flowchart flowChart;
     Rigidbody rb;
     Animator animator;
 
@@ -19,7 +26,7 @@ public class PlayerManager : MonoBehaviour
         PlayerPrefs.GetFloat("zahyouy",0);
         PlayerPrefs.GetFloat("zahyouz",0);*/
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -41,7 +48,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //当たり判定
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter1(Collider other)
     {
         Damage damager = other.GetComponent<Damage>();
         if(damager != null)
@@ -50,6 +57,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     //セーブ
     /*private void Save()
     {
@@ -67,4 +75,16 @@ public class PlayerManager : MonoBehaviour
         }
     }*/
     
+=======
+    void OnTriggerEnter(Collider collider){ 
+        if (collider.gameObject.tag == "people"){
+            Debug.Log("test");
+        //animator.SetInteger("actid".(int)ActID.IDOL);
+        flowChart = collider.gameObject.GetComponent<Flowchart>();
+        flowChart.SendFungusMessage("Talk");
+        }
+     }
+>>>>>>> 55786841f96a1f2dcc7c0ea2a40c9dc7da62d40e
 }
+
+

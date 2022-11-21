@@ -8,8 +8,9 @@ TagManager:
   - Monster
   - Damage
   - Laser
-  - Enemy
   - people
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
