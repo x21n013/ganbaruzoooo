@@ -5,6 +5,28 @@ using Fungus;
 
 public class PlayerController : MonoBehaviour
 {
+
+    // -------------------------------------------------------
+    /// <summary>
+    /// ステータス.
+    /// </summary>
+    // -------------------------------------------------------
+    [System.Serializable]
+    public class Status
+    {
+        // 体力.
+        public int Hp = 10;
+        // 攻撃力.
+        public int Power = 1;
+    }
+ 
+    // 攻撃HitオブジェクトのColliderCall.
+    [SerializeField] ColliderCallReceiver attackHitCall = null;
+    // 基本ステータス.
+    [SerializeField] Status DefaultStatus = new Status();
+    // 現在のステータス.
+    public Status CurrentStatus = new Status();
+ 
     
     // 攻撃判定用オブジェクト.
     [SerializeField] GameObject attackHit = null;
@@ -46,6 +68,11 @@ public class PlayerController : MonoBehaviour
         //FootSphereのイベント登録
         footColliderCall.TriggerStayEvent.AddListener( OnFootTriggerStay );
         footColliderCall.TriggerExitEvent.AddListener( OnFootTriggerExit );
+        // 攻撃判定用コライダーイベント登録.
+        attackHitCall.TriggerEnterEvent.AddListener( OnAttackHitTriggerEnter );
+        // 現在のステータスの初期化.
+        CurrentStatus.Hp = DefaultStatus.Hp;
+        CurrentStatus.Power = DefaultStatus.Power;
     }
 
     // Update is called once per frame
@@ -73,19 +100,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-{
-    if( isAttack == false )
-        {
-            Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-            Vector3 move = input.normalized * 7.5f;  //スピード変更
-            Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
-            cameraMove.y = 0;
-            Vector3 currentRigidVelocity = rigid.velocity;
-            currentRigidVelocity.y = 0;
+    {
+        if( isAttack == false )
+            {
+                 Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
+                Vector3 move = input.normalized * 5f;  //スピード変更
+                Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
+                 cameraMove.y = 0;
+                Vector3 currentRigidVelocity = rigid.velocity;
+                currentRigidVelocity.y = 0;
  
-            rigid.AddForce( cameraMove - currentRigidVelocity, ForceMode.VelocityChange );
-        }
-}
+                rigid.AddForce( cameraMove - currentRigidVelocity, ForceMode.VelocityChange );
+            }
+    }   
 
     // ---------------------------------------------------------------------
     /// <summary>
@@ -132,7 +159,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-     // ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// 攻撃判定トリガーエンターイベントコール.
+    /// </summary>
+    /// <param name="col"> 侵入したコライダー. </param>
+    // ---------------------------------------------------------------------
+    void OnAttackHitTriggerEnter( Collider col )
+    {
+        if( col.gameObject.tag == "Enemy" )
+        {
+            var enemy = col.gameObject.GetComponent<EnemyBase>();
+            enemy?.OnAttackHit( CurrentStatus.Power );
+            attackHit.SetActive( false );
+        }
+    }
+
+    // ---------------------------------------------------------------------
     /// <summary>
     /// FootSphereトリガーイグジットコール.
     /// </summary>
@@ -148,6 +191,9 @@ public class PlayerController : MonoBehaviour
         }
     
     }
+    /*富永会話システム
+
+
     private Flowchart flowChart;
     void OnTriggerEnter(Collider collider){ 
         
@@ -158,9 +204,39 @@ public class PlayerController : MonoBehaviour
             flowChart.SendFungusMessage("Talk");
             }
         }
-    
+    */
 
-     // ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// 敵の攻撃がヒットしたときの処理.
+    /// </summary>
+    /// <param name="damage"> 食らったダメージ. </param>
+    // ---------------------------------------------------------------------
+    public void OnEnemyAttackHit( int damage )
+    {
+        CurrentStatus.Hp -= damage;
+ 
+        if( CurrentStatus.Hp <= 0 )
+        {
+            OnDie();
+        }
+        else
+        {
+            Debug.Log( damage + "のダメージを食らった!!残りHP" + CurrentStatus.Hp );
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// 死亡時処理.
+    /// </summary>
+    // ---------------------------------------------------------------------
+    void OnDie()
+    {
+        Debug.Log( "死亡しました。" );
+    }
+
+    // ---------------------------------------------------------------------
     /// <summary>
     /// 攻撃アニメーションHitイベントコール.
     /// </summary>
@@ -171,6 +247,7 @@ public class PlayerController : MonoBehaviour
         // 攻撃判定用オブジェクトを表示.
         attackHit.SetActive( true );
     }
+    
     // ---------------------------------------------------------------------
     /// <summary>
     /// 攻撃アニメーション終了イベントコール.
