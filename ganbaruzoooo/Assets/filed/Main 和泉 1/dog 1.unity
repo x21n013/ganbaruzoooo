@@ -425,6 +425,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38267b8782768bf4995d3c5fe39573fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackHitCall: {fileID: 0}
+  DefaultStatus:
+    Hp: 10
+    Power: 1
+  CurrentStatus:
+    Hp: 10
+    Power: 1
   attackHit: {fileID: 1962339578}
   footColliderCall: {fileID: 425614124}
   jumpPower: 20
@@ -1527,6 +1534,10 @@ PrefabInstance:
     - target: {fileID: 6839958930492650030, guid: 6bfdcd0c7a5f0654cbe94496619a1c77, type: 3}
       propertyPath: m_Name
       value: DogPolyart Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839958930492650030, guid: 6bfdcd0c7a5f0654cbe94496619a1c77, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6839958930502123922, guid: 6bfdcd0c7a5f0654cbe94496619a1c77, type: 3}
       propertyPath: m_Controller
