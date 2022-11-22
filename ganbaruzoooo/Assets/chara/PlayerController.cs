@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         if( isAttack == false )
             {
                  Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-                Vector3 move = input.normalized * 7.5f;  //スピード変更
+                Vector3 move = input.normalized * 5f;  //スピード変更
                 Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
                  cameraMove.y = 0;
                 Vector3 currentRigidVelocity = rigid.velocity;
@@ -206,7 +206,37 @@ public class PlayerController : MonoBehaviour
         }
     */
 
-     // ---------------------------------------------------------------------
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// 敵の攻撃がヒットしたときの処理.
+    /// </summary>
+    /// <param name="damage"> 食らったダメージ. </param>
+    // ---------------------------------------------------------------------
+    public void OnEnemyAttackHit( int damage )
+    {
+        CurrentStatus.Hp -= damage;
+ 
+        if( CurrentStatus.Hp <= 0 )
+        {
+            OnDie();
+        }
+        else
+        {
+            Debug.Log( damage + "のダメージを食らった!!残りHP" + CurrentStatus.Hp );
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// 死亡時処理.
+    /// </summary>
+    // ---------------------------------------------------------------------
+    void OnDie()
+    {
+        Debug.Log( "死亡しました。" );
+    }
+
+    // ---------------------------------------------------------------------
     /// <summary>
     /// 攻撃アニメーションHitイベントコール.
     /// </summary>
@@ -217,6 +247,7 @@ public class PlayerController : MonoBehaviour
         // 攻撃判定用オブジェクトを表示.
         attackHit.SetActive( true );
     }
+    
     // ---------------------------------------------------------------------
     /// <summary>
     /// 攻撃アニメーション終了イベントコール.
