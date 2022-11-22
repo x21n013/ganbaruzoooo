@@ -24,6 +24,19 @@ public class EnemyBase : MonoBehaviour
     // アニメーター.
     Animator animator = null;
 
+    // 周辺レーダーコライダーコール.
+    [SerializeField] ColliderCallReceiver aroundColliderCall = null;
+
+    // 攻撃間隔.
+    [SerializeField] float attackInterval = 3f;
+
+    // 攻撃状態フラグ.
+    bool isBattle = false;
+    // 攻撃時間計測用.
+    float attackTimer = 0f;
+    //! 攻撃判定用コライダーコール.
+    [SerializeField] ColliderCallReceiver attackHitColliderCall = null;
+
     void Start()
     {
         // Animatorを取得し保管.
@@ -31,6 +44,32 @@ public class EnemyBase : MonoBehaviour
         // 最初に現在のステータスを基本ステータスとして設定.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
+         // 周辺コライダーイベント登録.
+        aroundColliderCall.TriggerEnterEvent.AddListener( OnAroundTriggerEnter );
+        aroundColliderCall.TriggerStayEvent.AddListener( OnAroundTriggerStay );
+        aroundColliderCall.TriggerExitEvent.AddListener( OnAroundTriggerExit );
+        // 攻撃コライダーイベント登録.
+        attackHitColliderCall.TriggerEnterEvent.AddListener( OnAttackTriggerEnter );
+        attackHitColliderCall.gameObject.SetActive( false );
+    }
+
+     void Update()
+    {
+        // 攻撃できる状態の時.
+        if( isBattle == true )
+        {
+            attackTimer += Time.deltaTime;
+ 
+            if( attackTimer >= 3f )
+            {
+                animator.SetTrigger( "isAttack" );
+                attackTimer = 0;
+            }
+        }
+        else
+        {
+            attackTimer = 0;
+        }
     }
 
     // ----------------------------------------------------------
@@ -52,6 +91,88 @@ public class EnemyBase : MonoBehaviour
         {
             animator.SetTrigger( "isHit" );
         }
+    }
+
+    // ------------------------------------------------------------
+    /// <summary>
+    /// 攻撃コライダーエンターイベントコール.
+    /// </summary>
+    /// <param name="other"> 接近コライダー. </param>
+    // ------------------------------------------------------------
+    void OnAttackTriggerEnter( Collider other )
+    {
+        if( other.gameObject.tag == "Player" )
+        {
+            var player = other.GetComponent<PlayerController>();
+            player?.OnEnemyAttackHit( CurrentStatus.Power );
+            attackHitColliderCall.gameObject.SetActive( false );
+        }
+    }
+
+     // ------------------------------------------------------------
+    /// <summary>
+    /// 周辺レーダーコライダーステイイベントコール.
+    /// </summary>
+    /// <param name="other"> 接近コライダー. </param>
+    // ------------------------------------------------------------
+
+    // ------------------------------------------------------------
+    /// <summary>
+    /// 周辺レーダーコライダーエンターイベントコール.
+    /// </summary>
+    /// <param name="other"> 接近コライダー. </param>
+    // ------------------------------------------------------------
+    void OnAroundTriggerEnter( Collider other )
+    {
+        if( other.gameObject.tag == "Player" )
+        {
+            isBattle = true;
+        }
+    }
+
+    // ------------------------------------------------------------
+    /// <summary>
+    /// 周辺レーダーコライダー終了イベントコール.
+    /// </summary>
+    /// <param name="other"> 接近コライダー. </param>
+    // ------------------------------------------------------------
+    void OnAroundTriggerExit( Collider other )
+    {
+        if( other.gameObject.tag == "Player" )
+        {
+            isBattle = false;
+        }
+    }
+
+
+    void OnAroundTriggerStay( Collider other )
+    {
+        if( other.gameObject.tag == "Player" )
+        {
+            var _dir = ( other.gameObject.transform.position - this.transform.position ).normalized;
+            _dir.y = 0;
+            this.transform.forward = _dir;
+        }
+    }
+
+    // ----------------------------------------------------------
+    /// <summary>
+    /// 攻撃Hitアニメーションコール.
+    /// </summary>
+    // ----------------------------------------------------------
+    void Anim_AttackHit()
+    {
+        attackHitColliderCall.gameObject.SetActive( true );
+    }
+
+    // ----------------------------------------------------------
+    /// <summary>
+    /// 攻撃アニメーション終了時コール.
+    /// </summary>
+    // ----------------------------------------------------------
+    void Anim_AttackEnd()
+    {
+        attackHitColliderCall.gameObject.SetActive( false );
     }
 
     // ----------------------------------------------------------
