@@ -21,8 +21,13 @@ public class EnemyBase : MonoBehaviour
     // 現在のステータス.
     public Status CurrentStatus = new Status();
 
+    // アニメーター.
+    Animator animator = null;
+
     void Start()
     {
+        // Animatorを取得し保管.
+        animator = GetComponent<Animator>();
         // 最初に現在のステータスを基本ステータスとして設定.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
@@ -43,6 +48,10 @@ public class EnemyBase : MonoBehaviour
         {
             OnDie();
         }
+        else
+        {
+            animator.SetTrigger( "isHit" );
+        }
     }
 
     // ----------------------------------------------------------
@@ -53,7 +62,7 @@ public class EnemyBase : MonoBehaviour
     void OnDie()
     {
         Debug.Log( "死亡" );
-        this.gameObject.SetActive( false );
+        animator.SetBool( "isDie", true );
     }
 
     // ----------------------------------------------------------
@@ -63,5 +72,6 @@ public class EnemyBase : MonoBehaviour
     // ----------------------------------------------------------
     void Anim_DieEnd()
     {
+        this.gameObject.SetActive( false );
     }
 }
