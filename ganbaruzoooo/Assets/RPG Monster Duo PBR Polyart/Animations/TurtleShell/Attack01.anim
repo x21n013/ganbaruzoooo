@@ -25364,7 +25364,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.33333334
-    functionName: Animu_AttackHit
+    functionName: Anim_AttackHit
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
