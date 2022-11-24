@@ -1,7 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+
+    //! 自身のコライダー.
+    [SerializeField] Collider myCollider = null;
+    //! 攻撃ヒット時エフェクトプレハブ.
+    [SerializeField] GameObject hitParticlePrefab = null;
+
     // ----------------------------------------------------------
     /// <summary>
     /// ステータス.
@@ -78,11 +86,16 @@ public class EnemyBase : MonoBehaviour
     /// </summary>
     /// <param name="damage"> 食らったダメージ. </param>
     // ----------------------------------------------------------
-    public void OnAttackHit( int damage )
+    public void OnAttackHit( int damage, Vector3 attackPosition )
     {
         CurrentStatus.Hp -= damage;
         Debug.Log( "Hit Damage " + damage + "/CurrentHp = " + CurrentStatus.Hp );
-
+ 
+        var pos = myCollider.ClosestPoint( attackPosition );
+        var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
+        var par = obj.GetComponent<ParticleSystem>();
+        StartCoroutine( WaitDestroy( par ) );
+ 
         if( CurrentStatus.Hp <= 0 )
         {
             OnDie();
@@ -91,6 +104,18 @@ public class EnemyBase : MonoBehaviour
         {
             animator.SetTrigger( "isHit" );
         }
+    }
+
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// パーティクルが終了したら破棄する.
+    /// </summary>
+    /// <param name="particle"></param>
+    // ---------------------------------------------------------------------
+    IEnumerator WaitDestroy( ParticleSystem particle )
+    {
+        yield return new WaitUntil( () => particle.isPlaying == false );
+        Destroy( particle.gameObject );
     }
 
     // ------------------------------------------------------------
@@ -104,7 +129,7 @@ public class EnemyBase : MonoBehaviour
         if( other.gameObject.tag == "Player" )
         {
             var player = other.GetComponent<PlayerController>();
-            player?.OnEnemyAttackHit( CurrentStatus.Power );
+            player?.OnEnemyAttackHit( CurrentStatus.Power, this.transform.position );
             attackHitColliderCall.gameObject.SetActive( false );
         }
     }

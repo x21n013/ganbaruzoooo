@@ -37,6 +37,13 @@ public class PlayerController : MonoBehaviour
     //ジャンプ力
     [SerializeField] float jumpPower = 10000f;
 
+    // 自身のコライダー.
+    [SerializeField] Collider myCollider = null;
+    // 攻撃を食らったときのパーティクルプレハブ.
+    [SerializeField] GameObject hitParticlePrefab = null;
+    // パーティクルオブジェクト保管用リスト.
+    List<GameObject> particleObjectList = new List<GameObject>();
+
     
         // PCキー横方向入力.
     float horizontalKeyInput = 0;
@@ -172,7 +179,7 @@ public class PlayerController : MonoBehaviour
         if( col.gameObject.tag == "Enemy" )
         {
             var enemy = col.gameObject.GetComponent<EnemyBase>();
-            enemy?.OnAttackHit( CurrentStatus.Power );
+            enemy?.OnAttackHit( CurrentStatus.Power, this.transform.position );
             attackHit.SetActive( false );
         }
     }
@@ -214,9 +221,16 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="damage"> 食らったダメージ. </param>
     // ---------------------------------------------------------------------
-    public void OnEnemyAttackHit( int damage )
+    
+    public void OnEnemyAttackHit( int damage, Vector3 attackPosition )
     {
         CurrentStatus.Hp -= damage;
+ 
+        var pos = myCollider.ClosestPoint( attackPosition );
+        var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
+        var par = obj.GetComponent<ParticleSystem>();
+        StartCoroutine( WaitDestroy( par ) );
+        particleObjectList.Add( obj );
  
         if( CurrentStatus.Hp <= 0 )
         {
@@ -227,6 +241,19 @@ public class PlayerController : MonoBehaviour
             Debug.Log( damage + "のダメージを食らった!!残りHP" + CurrentStatus.Hp );
         }
     }
+ 
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// パーティクルが終了したら破棄する.
+    /// </summary>
+    /// <param name="particle"></param>
+    // ---------------------------------------------------------------------
+    IEnumerator WaitDestroy( ParticleSystem particle )
+    {
+        yield return new WaitUntil( () => particle.isPlaying == false );
+        if( particleObjectList.Contains( particle.gameObject ) == true ) particleObjectList.Remove( particle.gameObject );
+        Destroy( particle.gameObject );
+    }
 
     // ---------------------------------------------------------------------
     /// <summary>
@@ -236,6 +263,13 @@ public class PlayerController : MonoBehaviour
     void OnDie()
     {
         Debug.Log( "死亡しました。" );
+
+        StopAllCoroutines();
+        if( particleObjectList.Count > 0 )
+        {
+            foreach( var obj in particleObjectList ) Destroy( obj );
+            particleObjectList.Clear();
+        }
     }
 
     // ---------------------------------------------------------------------
