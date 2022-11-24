@@ -28,3 +28,4 @@ public class CameraRotate : MonoBehaviour {
         transform.RotateAround(playerPos, Vector3.up, angle);
     }
 }
+
