@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
         if( isAttack == false )
             {
                  Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-                Vector3 move = input.normalized * 15f;  //スピード変更
+                Vector3 move = input.normalized * 5f;  //スピード変更
                 //if(float )
 
                 Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
