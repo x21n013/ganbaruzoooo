@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public Status CurrentStatus = new Status();
  
     
+    
     // 攻撃判定用オブジェクト.
     [SerializeField] GameObject attackHit = null;
 
@@ -61,7 +62,6 @@ public class PlayerController : MonoBehaviour
 
     //接地フラグ
     bool isGround = false;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -204,11 +204,11 @@ public class PlayerController : MonoBehaviour
 
 
     private Flowchart flowChart;
+    
     void OnTriggerEnter(Collider collider){ 
         
             if (collider.gameObject.tag == "people"){
-            float? horizontalKeyInput = null;
-            float? verticalKeyInput = null;
+
             flowChart = collider.gameObject.GetComponent<Flowchart>();
             flowChart.SendFungusMessage("Talk");
             }
