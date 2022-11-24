@@ -16,7 +16,7 @@ public class warpdungeon : MonoBehaviour
  
     private void OnCollisionEnter(Collision dungeon1)
     {
-    if (this.gameObject.CompareTag(answerTag)){
+    if (dungeon1.gameObject.tag=="Player"){
         dungeon1.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
     }else{
 
