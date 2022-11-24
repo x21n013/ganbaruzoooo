@@ -12,7 +12,8 @@ public class warpdungeon : MonoBehaviour
 
     // Update is called once per frame
    public Vector3 pos;
-    private string answerTag = "Player";
+    //↓この文は使わない
+    // private string answerTag = "Player";
  
     private void OnCollisionEnter(Collision dungeon1)
     {
