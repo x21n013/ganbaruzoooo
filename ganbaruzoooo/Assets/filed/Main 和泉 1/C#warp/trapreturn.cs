@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dungeontrap : MonoBehaviour
+public class trapreturn : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -11,13 +11,13 @@ public class dungeontrap : MonoBehaviour
     }
 
     // Update is called once per frame
-     public Vector3 pos;
+    public Vector3 pos;
     
  
-    private void OnCollisionEnter(Collision dungeontrap)
+    private void OnTriggerEnter(Collider dungeonreturn)
     {
-    if (dungeontrap.gameObject.tag=="Player"){
-        dungeontrap.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
+    if (dungeonreturn.gameObject.tag=="Player"){
+        dungeonreturn.gameObject.transform.position = new Vector3(pos.x, pos.y, pos.z);
         
     }else{
 
