@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Status CurrentStatus = new Status();
  
     
+    
     // 攻撃判定用オブジェクト.
     [SerializeField] GameObject attackHit = null;
 
@@ -65,7 +66,6 @@ public class PlayerController : MonoBehaviour
 
     //接地フラグ
     bool isGround = false;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
         if( isAttack == false )
             {
                  Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-                Vector3 move = input.normalized * 5f;  //スピード変更
+                Vector3 move = input.normalized * 8f;  //スピード変更
                 //if(float )
 
                 Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
@@ -211,11 +211,11 @@ public class PlayerController : MonoBehaviour
 
 
     private Flowchart flowChart;
+    
     void OnTriggerEnter(Collider collider){ 
         
             if (collider.gameObject.tag == "people"){
-            float? horizontalKeyInput = null;
-            float? verticalKeyInput = null;
+
             flowChart = collider.gameObject.GetComponent<Flowchart>();
             flowChart.SendFungusMessage("Talk");
             }
