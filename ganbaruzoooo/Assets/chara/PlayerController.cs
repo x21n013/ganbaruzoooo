@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour
         // 攻撃力.
         public int Power = 1;
     }
+
+    //! HPバーのスライダー.
+    [SerializeField] Slider hpBar = null;
  
     // 攻撃HitオブジェクトのColliderCall.
     [SerializeField] ColliderCallReceiver attackHitCall = null;
@@ -80,6 +84,9 @@ public class PlayerController : MonoBehaviour
         // 現在のステータスの初期化.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
+        // スライダーを初期化.
+        hpBar.maxValue = DefaultStatus.Hp;
+        hpBar.value = CurrentStatus.Hp;
     }
 
     // Update is called once per frame
@@ -224,7 +231,9 @@ public class PlayerController : MonoBehaviour
     
     public void OnEnemyAttackHit( int damage, Vector3 attackPosition )
     {
+        //ダメージ計算、スライダー設定
         CurrentStatus.Hp -= damage;
+        hpBar.value = CurrentStatus.Hp;
  
         var pos = myCollider.ClosestPoint( attackPosition );
         var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
