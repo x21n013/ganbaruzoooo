@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool isArea;
 
     // -------------------------------------------------------
     /// <summary>
@@ -217,6 +218,25 @@ public class PlayerController : MonoBehaviour
             }
         }
     */
+
+    //////////////////////////////////////////////////
+    //追尾システムについて
+     void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "ChaseArea" )
+        {
+            isArea = true;
+        }
+    }
+ 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "ChaseArea" )
+        {
+            isArea = false;
+        }
+    }
+    //////////////////////////////////////////////////
 
     // ---------------------------------------------------------------------
     /// <summary>
