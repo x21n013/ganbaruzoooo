@@ -21,8 +21,7 @@ public class PlayerController : MonoBehaviour
         public int Power = 1;
     }
 
-    //! HPバーのスライダー.
-    [SerializeField] Slider hpBar = null;
+
  
     // 攻撃HitオブジェクトのColliderCall.
     [SerializeField] ColliderCallReceiver attackHitCall = null;
@@ -84,10 +83,7 @@ public class PlayerController : MonoBehaviour
         // 現在のステータスの初期化.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
-        // スライダーを初期化.
-        hpBar.maxValue = DefaultStatus.Hp;
-        hpBar.value = CurrentStatus.Hp;
-    }
+}
 
     // Update is called once per frame
     void Update()
@@ -233,7 +229,6 @@ public class PlayerController : MonoBehaviour
     {
         //ダメージ計算、スライダー設定
         CurrentStatus.Hp -= damage;
-        hpBar.value = CurrentStatus.Hp;
  
         var pos = myCollider.ClosestPoint( attackPosition );
         var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
