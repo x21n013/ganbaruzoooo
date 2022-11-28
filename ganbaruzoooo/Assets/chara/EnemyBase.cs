@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] Collider myCollider = null;
     //! 攻撃ヒット時エフェクトプレハブ.
     [SerializeField] GameObject hitParticlePrefab = null;
+     //! HPバーのスライダー.
+    [SerializeField] Slider hpBar = null;
 
     // ----------------------------------------------------------
     /// <summary>
@@ -59,6 +62,9 @@ public class EnemyBase : MonoBehaviour
         // 攻撃コライダーイベント登録.
         attackHitColliderCall.TriggerEnterEvent.AddListener( OnAttackTriggerEnter );
         attackHitColliderCall.gameObject.SetActive( false );
+        // スライダーを初期化.
+        hpBar.maxValue = DefaultStatus.Hp;
+        hpBar.value = CurrentStatus.Hp;
     }
 
      void Update()
@@ -89,6 +95,7 @@ public class EnemyBase : MonoBehaviour
     public void OnAttackHit( int damage, Vector3 attackPosition )
     {
         CurrentStatus.Hp -= damage;
+        hpBar.value = CurrentStatus.Hp;
         Debug.Log( "Hit Damage " + damage + "/CurrentHp = " + CurrentStatus.Hp );
  
         var pos = myCollider.ClosestPoint( attackPosition );
