@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class EnemyBase : MonoBehaviour
 {
 
+    //! HPバーのスライダー.
+    [SerializeField] Slider hpBar = null;
+
     //! 自身のコライダー.
     [SerializeField] Collider myCollider = null;
     //! 攻撃ヒット時エフェクトプレハブ.
@@ -60,6 +63,9 @@ public class EnemyBase : MonoBehaviour
         // 攻撃コライダーイベント登録.
         attackHitColliderCall.TriggerEnterEvent.AddListener( OnAttackTriggerEnter );
         attackHitColliderCall.gameObject.SetActive( false );
+        // スライダーを初期化.
+        hpBar.maxValue = DefaultStatus.Hp;
+        hpBar.value = CurrentStatus.Hp;
 
     }
 
@@ -91,7 +97,7 @@ public class EnemyBase : MonoBehaviour
     public void OnAttackHit( int damage, Vector3 attackPosition )
     {
         CurrentStatus.Hp -= damage;
-
+        hpBar.value = CurrentStatus.Hp;
  
         var pos = myCollider.ClosestPoint( attackPosition );
         var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
