@@ -127,6 +127,23 @@ void Start()
             bool currentIsRun = animator.GetBool( "isRun" );
             if( currentIsRun == true ) animator.SetBool( "isRun", false );
         }
+        //神藤　セーブデータ
+    
+        if(Input.GetKey(KeyCode.Y))
+        {
+        Vector3 Position = transform.position;
+        float x, y, z;
+        x = Position.x;
+        y = Position.y;
+        z = Position.z;
+
+        PlayerPrefs.SetFloat("zahyoux",x);
+        PlayerPrefs.SetFloat("zahyouy",y);
+        PlayerPrefs.SetFloat("zahyouz",z);
+
+        PlayerPrefs.Save();
+        Debug.Log("セーブしました");
+        }
 
     }
 
@@ -224,7 +241,7 @@ void Start()
         }
     
     }
-    /*富永会話システム
+
 
 
     private Flowchart flowChart;
@@ -237,7 +254,7 @@ void Start()
             flowChart.SendFungusMessage("Talk");
             }
         }
-    */
+    
 
     //////////////////////////////////////////////////
     //追尾システムについて
