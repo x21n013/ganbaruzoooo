@@ -6,15 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/chara/\u795E\u85E4.unity"
-    guid: 352f5941b306a834a9b070df8e92b0be
-  - enabled: 0
-    path: "Assets/chara/main \u5C0F\u5DDD 2.unity"
-    guid: 62a52c2f251d81e4ab2e30b1bfac28af
+    path: "Assets/chara/\u795E\u85E4(new).unity"
+    guid: 80fc04164dfb7ed4cb3c6f3b5c966e81
   - enabled: 1
-    path: "Assets/chara/\u5C0F\u5DDD\u3000\u77F3\u6D41.unity"
-    guid: 3ca19e46d88176845b919548a481ad3a
-  - enabled: 1
-    path: "Assets/chara/\u77F3\u30B4\u30A6\u30EA\u3000\u500B\u4EBA 1.unity"
-    guid: 710368366a153304b80dacbf3473cb8c
+    path: "Assets/chara/\u3042\u3042\u3042 1.unity"
+    guid: 90df657e217d9ab4888a10f5c1f92575
   m_configObjects: {}
