@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //! HPバーのスライダー.
+    [SerializeField] Slider hpBar = null;
+    //探知範囲の取得
+    public bool isArea;
 
     // -------------------------------------------------------
     /// <summary>
@@ -19,6 +24,8 @@ public class PlayerController : MonoBehaviour
         // 攻撃力.
         public int Power = 1;
     }
+
+
  
     // 攻撃HitオブジェクトのColliderCall.
     [SerializeField] ColliderCallReceiver attackHitCall = null;
@@ -80,7 +87,10 @@ public class PlayerController : MonoBehaviour
         // 現在のステータスの初期化.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
-    }
+        // スライダーを初期化.
+        hpBar.maxValue = DefaultStatus.Hp;
+        hpBar.value = CurrentStatus.Hp;
+}
 
     // Update is called once per frame
     void Update()
@@ -215,6 +225,25 @@ public class PlayerController : MonoBehaviour
         }
     
 
+    //////////////////////////////////////////////////
+    //追尾システムについて
+     void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.name == "ChaseArea" )
+        {
+            isArea = true;
+        }
+    }
+ 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "ChaseArea" )
+        {
+            isArea = false;
+        }
+    }
+    //////////////////////////////////////////////////
+
     // ---------------------------------------------------------------------
     /// <summary>
     /// 敵の攻撃がヒットしたときの処理.
@@ -224,7 +253,9 @@ public class PlayerController : MonoBehaviour
     
     public void OnEnemyAttackHit( int damage, Vector3 attackPosition )
     {
+        //ダメージ計算、スライダー設定
         CurrentStatus.Hp -= damage;
+        hpBar.value = CurrentStatus.Hp;
  
         var pos = myCollider.ClosestPoint( attackPosition );
         var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
