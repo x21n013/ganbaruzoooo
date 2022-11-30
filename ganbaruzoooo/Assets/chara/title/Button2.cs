@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
  
-public class GameStart : MonoBehaviour
+public class Button2 : MonoBehaviour
 {
     public void ClickStartButton()
     {
-        SceneManager.LoadScene("小川　石流");
+        SceneManager.LoadScene("あああ 1");
     }
 }
