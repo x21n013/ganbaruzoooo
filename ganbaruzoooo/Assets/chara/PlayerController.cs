@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //! HPバーのスライダー.
+    [SerializeField] Slider hpBar = null;
+    //探知範囲の取得
     public bool isArea;
 
     // -------------------------------------------------------
@@ -84,15 +87,9 @@ public class PlayerController : MonoBehaviour
         // 現在のステータスの初期化.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
-        
-        //座標の取得　神藤　セーブデータ
-	    //Hp = PlayerPrefs.Getint("Hp",Hp);
-        //Power = PlayerPrefs.Getint("Power",Power);
-        Vector3 Position;
-        Position.x = PlayerPrefs.GetFloat("zahyoux",236);
-        Position.y = PlayerPrefs.GetFloat("zahyouy",0);
-        Position.z = PlayerPrefs.GetFloat("zahyouz",231);
-        transform.position = Position;
+        // スライダーを初期化.
+        hpBar.maxValue = DefaultStatus.Hp;
+        hpBar.value = CurrentStatus.Hp;
 }
 
     // Update is called once per frame
@@ -275,6 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         //ダメージ計算、スライダー設定
         CurrentStatus.Hp -= damage;
+        hpBar.value = CurrentStatus.Hp;
  
         var pos = myCollider.ClosestPoint( attackPosition );
         var obj = Instantiate( hitParticlePrefab, pos, Quaternion.identity );
