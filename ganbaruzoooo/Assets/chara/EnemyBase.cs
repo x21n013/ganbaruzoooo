@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class EnemyBase : MonoBehaviour
 {
 
+    // 攻撃状態フラグ.
+    public bool IsBattle = false;
+    // 開始時位置.
+    Vector3 startPosition = new Vector3();
+    // 開始時角度.
+    Quaternion startRotation = new Quaternion();
     //! HPバーのスライダー.
     [SerializeField] Slider hpBar = null;
 
@@ -42,14 +48,12 @@ public class EnemyBase : MonoBehaviour
     // 攻撃間隔.
     [SerializeField] float attackInterval = 3f;
 
-    // 攻撃状態フラグ.
-    bool isBattle = false;
     // 攻撃時間計測用.
     float attackTimer = 0f;
     //! 攻撃判定用コライダーコール.
-    [SerializeField] ColliderCallReceiver attackHitColliderCall = null;
+    [SerializeField] protected ColliderCallReceiver attackHitColliderCall = null;
 
-    void Start()
+    protected virtual void Start()
     {
         // Animatorを取得し保管.
         animator = GetComponent<Animator>();
@@ -66,13 +70,16 @@ public class EnemyBase : MonoBehaviour
         // スライダーを初期化.
         hpBar.maxValue = DefaultStatus.Hp;
         hpBar.value = CurrentStatus.Hp;
+        // 開始時の位置回転を保管.
+        startPosition = this.transform.position;
+        startRotation = this.transform.rotation;
 
     }
 
-     void Update()
+     protected virtual void Update()
     {
         // 攻撃できる状態の時.
-        if( isBattle == true )
+        if( IsBattle == true )
         {
             attackTimer += Time.deltaTime;
  
@@ -86,6 +93,7 @@ public class EnemyBase : MonoBehaviour
         {
             attackTimer = 0;
         }
+
     }
 
     // ----------------------------------------------------------
@@ -159,7 +167,7 @@ public class EnemyBase : MonoBehaviour
     {
         if( other.gameObject.tag == "Player" )
         {
-            isBattle = true;
+            IsBattle = true;
         }
     }
 
@@ -173,7 +181,7 @@ public class EnemyBase : MonoBehaviour
     {
         if( other.gameObject.tag == "Player" )
         {
-            isBattle = false;
+            IsBattle = false;
         }
     }
 
@@ -227,5 +235,22 @@ public class EnemyBase : MonoBehaviour
     void Anim_DieEnd()
     {
         this.gameObject.SetActive( false );
+    }
+    // ----------------------------------------------------------
+    /// <summary>
+    /// プレイヤーリトライ時の処理.
+    /// </summary>
+    // ----------------------------------------------------------
+    public void OnRetry()
+    {
+        // 現在のステータスを基本ステータスとして設定.
+        CurrentStatus.Hp = DefaultStatus.Hp;
+        CurrentStatus.Power = DefaultStatus.Power;
+        // 開始時の位置回転を保管.
+        this.transform.position = startPosition;
+        this.transform.rotation = startRotation;
+ 
+        //敵を再度表示
+        this.gameObject.SetActive(true);
     }
 }
