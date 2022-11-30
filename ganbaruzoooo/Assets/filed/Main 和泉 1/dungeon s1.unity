@@ -7739,6 +7739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dungeon_Straight_Half (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 261881853625381577, guid: a0708bab0e06c414381a6861ecf05a38, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0708bab0e06c414381a6861ecf05a38, type: 3}
 --- !u!4 &1075963570 stripped
