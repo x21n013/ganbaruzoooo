@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
         }
     
     }
-    /*富永会話システム
+
 
 
     private Flowchart flowChart;
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
             flowChart.SendFungusMessage("Talk");
             }
         }
-    */
+    
 
     //////////////////////////////////////////////////
     //追尾システムについて
