@@ -84,6 +84,15 @@ public class PlayerController : MonoBehaviour
         // 現在のステータスの初期化.
         CurrentStatus.Hp = DefaultStatus.Hp;
         CurrentStatus.Power = DefaultStatus.Power;
+        
+        //座標の取得　神藤　セーブデータ
+	    //Hp = PlayerPrefs.Getint("Hp",Hp);
+        //Power = PlayerPrefs.Getint("Power",Power);
+        Vector3 Position;
+        Position.x = PlayerPrefs.GetFloat("zahyoux",236);
+        Position.y = PlayerPrefs.GetFloat("zahyouy",0);
+        Position.z = PlayerPrefs.GetFloat("zahyouz",231);
+        transform.position = Position;
 }
 
     // Update is called once per frame
@@ -106,6 +115,23 @@ public class PlayerController : MonoBehaviour
         {
             bool currentIsRun = animator.GetBool( "isRun" );
             if( currentIsRun == true ) animator.SetBool( "isRun", false );
+        }
+        //神藤　セーブデータ
+    
+        if(Input.GetKey(KeyCode.Y))
+        {
+        Vector3 Position = transform.position;
+        float x, y, z;
+        x = Position.x;
+        y = Position.y;
+        z = Position.z;
+
+        PlayerPrefs.SetFloat("zahyoux",x);
+        PlayerPrefs.SetFloat("zahyouy",y);
+        PlayerPrefs.SetFloat("zahyouz",z);
+
+        PlayerPrefs.Save();
+        Debug.Log("セーブしました");
         }
 
     }
