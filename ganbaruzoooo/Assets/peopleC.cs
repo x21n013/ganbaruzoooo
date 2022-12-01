@@ -28,6 +28,7 @@ public class peopleC : MonoBehaviour
             Rigidbody rb = other.GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
             //GetComponent<BoxCollider>().enabled = false;
+            Debug.Log("test");
         }
     }
    /* void update(){
