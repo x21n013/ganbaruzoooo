@@ -3,9 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+     //! ゲームオーバー時イベント.
+    public UnityEvent GameOverEvent = new UnityEvent();
+    // 開始時位置.
+    Vector3 startPosition = new Vector3();
+    // 開始時角度.
+    Quaternion startRotation = new Quaternion();
+
     //! HPバーのスライダー.
     [SerializeField] Slider hpBar = null;
     //探知範囲の取得
@@ -70,8 +78,11 @@ public class PlayerController : MonoBehaviour
     //接地フラグ
     bool isGround = false;
 
-    // Start is called before the first frame update
-    void Start()
+///////////////////////////////////////////////////////////////////////////////////////
+/*ここから上が変数宣言*/
+///////////////////////////////////////////////////////////////////////////////////////
+    
+void Start()
     {
         // Animatorを取得し保管.
         animator = GetComponent<Animator>();
@@ -90,6 +101,9 @@ public class PlayerController : MonoBehaviour
         // スライダーを初期化.
         hpBar.maxValue = DefaultStatus.Hp;
         hpBar.value = CurrentStatus.Hp;
+        // 開始時の位置回転を保管.
+        startPosition = this.transform.position;
+        startRotation = this.transform.rotation;
         //データのロード処理　神藤
 	    //Hp = PlayerPrefs.Getint("Hp",Hp);
         //Power = PlayerPrefs.Getint("Power",Power);
@@ -98,7 +112,8 @@ public class PlayerController : MonoBehaviour
         Position.y = PlayerPrefs.GetFloat("zahyouy",0);
         Position.z = PlayerPrefs.GetFloat("zahyouz",231);
         transform.position = Position;
-}
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -327,6 +342,26 @@ public class PlayerController : MonoBehaviour
             foreach( var obj in particleObjectList ) Destroy( obj );
             particleObjectList.Clear();
         }
+
+        GameOverEvent?.Invoke();
+    }
+
+    // ---------------------------------------------------------------------
+    /// <summary>
+    /// リトライ処理.
+    /// </summary>
+    // ---------------------------------------------------------------------
+    public void Retry()
+    {
+        // 現在のステータスの初期化.
+        CurrentStatus.Hp = DefaultStatus.Hp;
+        CurrentStatus.Power = DefaultStatus.Power;
+        // 位置回転を初期位置に戻す.
+        this.transform.position = startPosition;
+        this.transform.rotation = startRotation;
+ 
+        //攻撃処理の途中でやられた時用
+        isAttack = false;
     }
 
     // ---------------------------------------------------------------------
