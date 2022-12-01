@@ -90,6 +90,14 @@ public class PlayerController : MonoBehaviour
         // スライダーを初期化.
         hpBar.maxValue = DefaultStatus.Hp;
         hpBar.value = CurrentStatus.Hp;
+        //データのロード処理　神藤
+	    //Hp = PlayerPrefs.Getint("Hp",Hp);
+        //Power = PlayerPrefs.Getint("Power",Power);
+        Vector3 Position;
+        Position.x = PlayerPrefs.GetFloat("zahyoux",236);
+        Position.y = PlayerPrefs.GetFloat("zahyouy",0);
+        Position.z = PlayerPrefs.GetFloat("zahyouz",231);
+        transform.position = Position;
 }
 
     // Update is called once per frame
@@ -113,7 +121,7 @@ public class PlayerController : MonoBehaviour
             bool currentIsRun = animator.GetBool( "isRun" );
             if( currentIsRun == true ) animator.SetBool( "isRun", false );
         }
-        //神藤　セーブデータ
+        //Yでデータの保存　神藤
     
         if(Input.GetKey(KeyCode.Y))
         {
@@ -129,6 +137,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerPrefs.Save();
         Debug.Log("セーブしました");
+        
         }
 
     }
