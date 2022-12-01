@@ -439,7 +439,7 @@ MonoBehaviour:
     Power: 1
   attackHit: {fileID: 1962339578}
   footColliderCall: {fileID: 425614124}
-  jumpPower: 20
+  jumpPower: 30
   myCollider: {fileID: 0}
   hitParticlePrefab: {fileID: 0}
 --- !u!136 &693640683
