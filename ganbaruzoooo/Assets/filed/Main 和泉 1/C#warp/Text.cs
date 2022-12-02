@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Text : MonoBehaviour
 {
-      [SerializeField] GameObject text;
+      [SerializeField] GameObject panel;
  
     void Start()
     {
-        text.SetActive(false);
+        panel.SetActive(false);
     }
  
     
@@ -16,17 +16,17 @@ public class Text : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider text1)
     {
-        if (text1.gameObject.tag == "Player")
+        if (text1.gameObject.name == "Cube")
         {
-            text.SetActive(true);
+            panel.SetActive(true);
         }
     }
  
     void OnTriggerExit(Collider text1)
     {
-        if (text1.gameObject.tag == "Player")
+        if (text1.gameObject.name == "Cube")
         {
-            text.SetActive(false);
+            panel.SetActive(false);
         }
     }
 }
