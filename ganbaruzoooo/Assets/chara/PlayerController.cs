@@ -104,7 +104,16 @@ void Start()
         // 開始時の位置回転を保管.
         startPosition = this.transform.position;
         startRotation = this.transform.rotation;
+        //データのロード処理　神藤
+	    //Hp = PlayerPrefs.Getint("Hp",Hp);
+        //Power = PlayerPrefs.Getint("Power",Power);
+        Vector3 Position;
+        Position.x = PlayerPrefs.GetFloat("zahyoux",236);
+        Position.y = PlayerPrefs.GetFloat("zahyouy",0);
+        Position.z = PlayerPrefs.GetFloat("zahyouz",231);
+        transform.position = Position;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -127,7 +136,7 @@ void Start()
             bool currentIsRun = animator.GetBool( "isRun" );
             if( currentIsRun == true ) animator.SetBool( "isRun", false );
         }
-        //神藤　セーブデータ
+        //Yでデータの保存　神藤
     
         if(Input.GetKey(KeyCode.Y))
         {
@@ -143,6 +152,7 @@ void Start()
 
         PlayerPrefs.Save();
         Debug.Log("セーブしました");
+        
         }
 
     }
