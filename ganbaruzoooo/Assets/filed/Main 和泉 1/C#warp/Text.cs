@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class Text : MonoBehaviour
 {
-    // Start is called before the first frame update
+      [SerializeField] GameObject text;
+ 
     void Start()
     {
-        
+        text.SetActive(false);
     }
+ 
+    
 
     // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider text1)
     {
-        
+        if (text1.gameObject.tag == "Player")
+        {
+            text.SetActive(true);
+        }
+    }
+ 
+    void OnTriggerExit(Collider text1)
+    {
+        if (text1.gameObject.tag == "Player")
+        {
+            text.SetActive(false);
+        }
     }
 }
