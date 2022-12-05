@@ -253,7 +253,7 @@ void Start()
     }
 
 
-
+    //会話システム
     private Flowchart flowChart;
     
     void OnTriggerEnter(Collider collider){ 
