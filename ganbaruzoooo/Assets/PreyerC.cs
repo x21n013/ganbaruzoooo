@@ -24,6 +24,6 @@ public class PreyerC : MonoBehaviour
 
         Playre.GetComponent<PlayerController>().enabled = true;
         Playre.GetComponent<Animator>().enabled = true; 
-        Debug.Log("test");
+        
     }
 }
