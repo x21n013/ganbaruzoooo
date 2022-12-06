@@ -18,6 +18,7 @@ public class Text : MonoBehaviour
     {
         if (this.gameObject.name == "Cube")
         {
+            
             panel.SetActive(true);
         }
     }
