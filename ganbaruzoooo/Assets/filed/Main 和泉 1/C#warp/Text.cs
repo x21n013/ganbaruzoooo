@@ -12,13 +12,12 @@ public class Text : MonoBehaviour
     }
  
     
-
+   
     // Update is called once per frame
     void OnTriggerEnter(Collider text1)
     {
         if (this.gameObject.name == "Cube")
         {
-            
             panel.SetActive(true);
         }
     }
