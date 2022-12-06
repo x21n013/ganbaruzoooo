@@ -12,7 +12,7 @@ public class Text : MonoBehaviour
     }
  
     
-    int i = 5;
+   
     // Update is called once per frame
     void OnTriggerEnter(Collider text1)
     {
