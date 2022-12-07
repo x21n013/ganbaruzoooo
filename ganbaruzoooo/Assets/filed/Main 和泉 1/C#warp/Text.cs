@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class Text : MonoBehaviour
 {
-    // Start is called before the first frame update
+      [SerializeField] GameObject panel;
+ 
     void Start()
     {
-        
+        panel.SetActive(false);
     }
-
+ 
+    
+   
     // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider text1)
     {
-        
+        if (this.gameObject.name == "Cube")
+        {
+            panel.SetActive(true);
+        }
+    }
+ 
+    void OnTriggerExit(Collider text1)
+    {
+        if (this.gameObject.name == "Cube")
+        {
+            panel.SetActive(false);
+        }
     }
 }

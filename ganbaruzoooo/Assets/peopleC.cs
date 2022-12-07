@@ -29,6 +29,7 @@ public class peopleC : MonoBehaviour
             rb.velocity = Vector3.zero;
             //GetComponent<BoxCollider>().enabled = false;
             Debug.Log("test");
+            
         }
     }
    /* void update(){
