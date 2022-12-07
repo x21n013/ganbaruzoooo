@@ -8334,6 +8334,7 @@ MonoBehaviour:
   jumpPower: 300
   myCollider: {fileID: 693640683}
   hitParticlePrefab: {fileID: 5092331036480105824, guid: 31ae1d060e1062740a602704d29865a3, type: 3}
+  SaveText: {fileID: 0}
 --- !u!136 &693640683
 CapsuleCollider:
   m_ObjectHideFlags: 0
