@@ -146,13 +146,14 @@ void Start()
         y = Position.y;
         z = Position.z;
 
+        //PlayerPrefs.SetString("Status",Status);
         PlayerPrefs.SetFloat("zahyoux",x);
         PlayerPrefs.SetFloat("zahyouy",y);
         PlayerPrefs.SetFloat("zahyouz",z);
 
         PlayerPrefs.Save();
         Debug.Log("セーブしました");
-        
+
         }
 
     }
