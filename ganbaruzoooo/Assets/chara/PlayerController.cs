@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ColliderCallReceiver footColliderCall = null;
 
     //ジャンプ力
-    [SerializeField] float jumpPower = 10000f;
+    [SerializeField] float jumpPower = 100f;
 
     // 自身のコライダー.
     [SerializeField] Collider myCollider = null;
@@ -140,19 +140,22 @@ void Start()
     
         if(Input.GetKey(KeyCode.Y))
         {
+        //int CurrentStatus;
+        
         Vector3 Position = transform.position;
         float x, y, z;
         x = Position.x;
         y = Position.y;
         z = Position.z;
 
+        //PlayerPrefs.Setint("Status",CurrentStatus);
         PlayerPrefs.SetFloat("zahyoux",x);
         PlayerPrefs.SetFloat("zahyouy",y);
         PlayerPrefs.SetFloat("zahyouz",z);
 
         PlayerPrefs.Save();
         Debug.Log("セーブしました");
-        
+
         }
 
     }
@@ -162,7 +165,7 @@ void Start()
         if( isAttack == false )
             {
                  Vector3 input = new Vector3( horizontalKeyInput, 0, verticalKeyInput );
-                Vector3 move = input.normalized * 8f;  //スピード変更
+                Vector3 move = input.normalized * 10f;  //スピード変更
                 //if(float )
 
                 Vector3 cameraMove = Camera.main.gameObject.transform.rotation * move;
@@ -253,7 +256,7 @@ void Start()
     }
 
 
-
+    //会話システム
     private Flowchart flowChart;
     
     void OnTriggerEnter(Collider collider){ 
@@ -359,7 +362,12 @@ void Start()
         // 位置回転を初期位置に戻す.
         this.transform.position = startPosition;
         this.transform.rotation = startRotation;
- 
+        //座標のロード　神藤
+        Vector3 Position;
+        Position.x = PlayerPrefs.GetFloat("zahyoux",236);
+        Position.y = PlayerPrefs.GetFloat("zahyouy",0);
+        Position.z = PlayerPrefs.GetFloat("zahyouz",231);
+        transform.position = Position;
         //攻撃処理の途中でやられた時用
         isAttack = false;
     }
