@@ -9,6 +9,6 @@ public class Button2 : MonoBehaviour
 {
     public void ClickStartButton()
     {
-        SceneManager.LoadScene("あああ 1");
+        SceneManager.LoadScene("ボタンテキスト変更 複製");
     }
 }
