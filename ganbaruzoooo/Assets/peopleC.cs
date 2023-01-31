@@ -11,14 +11,14 @@ public class peopleC : MonoBehaviour
     // Start is called before the first frame update
     
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
          float dx = Input.GetAxis("Horizontal") * Time.deltaTime * 0;
         float dz = Input.GetAxis("Vertical") * Time.deltaTime * 0;
         transform.position = new Vector3 (
             transform.position.x + dx, 0, transform.position.z + dz
         );
-    }
+    }*/
     
     void OnTriggerEnter(Collider other)
     {
