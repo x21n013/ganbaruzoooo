@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class NewBehaviourScript : MonoBehaviour
+ 
+public class SoundChange : MonoBehaviour
 {
     private AudioSource audio;
-    private AudioClip sound;
+    private AudioClip Sound;
     private string songName;
-
+    
     void Start()
     {
-            sudio = GetCompoment<AudioSource>();
+        audio = GetComponent<AudioSource>();
     }
-
-    public void attack()
+ 
+    public void SoundA()
     {
         songName = "SoundA";
         Sound = (AudioClip)Resources.Load("Sound/" + songName);
-        audio,PlayOnShot(Sound);
+        audio.PlayOneShot(Sound);
     }
-    
-    public void jump()
+ 
+    public void SoundB()
     {
         songName = "SoundB";
         Sound = (AudioClip)Resources.Load("Sound/" + songName);
-        audio.PlayOnShot(Sound);
+        audio.PlayOneShot(Sound);
     }
+ 
 }
